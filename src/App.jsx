@@ -9,6 +9,7 @@ import MainLayout from "./layout/MainLayout"
 import Jobslist from "./components/Jobslist"
 import NotFoundPage from "./pages/NotFoundPage"
 import JobPage from "./pages/JobPage"
+import AddJobPage from "./pages/AddJobPage"
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -16,6 +17,7 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="/jobs" element={<Jobslist />} />
         <Route path="/jobs/:id" element={<JobPage />} />
+        <Route path="/add-job" element={<AddJobPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     )
