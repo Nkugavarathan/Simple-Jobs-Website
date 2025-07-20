@@ -23,7 +23,7 @@ export default function Jobslist({ isHome = false }) {
       } catch (error) {
         console.log("Error occur while fetch data ...")
       } finally {
-        setLoading(false) // ✅ Fix typo here!
+        setLoading(false)
       }
     }
 

@@ -3,7 +3,7 @@ import logo from "../assets/react.svg"
 import { NavLink } from "react-router-dom"
 export default function Navbar() {
   const navlinkclass = ({ isActive }) => {
-    isActive
+    return isActive
       ? "bg-black text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
       : "text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
   }
