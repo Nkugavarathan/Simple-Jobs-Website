@@ -1,8 +1,11 @@
 import React from "react"
 import JobList from "./JobList"
-import jobData from "../jobs.json"
+
+// import jobData from "../jobs.json"
+import { jobs } from "../jobs.json"
 export default function Jobslist() {
-  const recentjobs = jobData.jobs.slice(0, 3)
+  // const recentjobs = jobData.jobs.slice(0, 3) // destr panni edukaddi ippadi eluthanum
+  const recentjobs = jobs.slice(0, 3)
   return (
     <>
       <section className="bg-blue-50 px-4 py-10">
