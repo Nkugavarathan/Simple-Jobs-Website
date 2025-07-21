@@ -23,8 +23,8 @@ function App() {
       body: JSON.stringify(newJob),
     })
 
-    const data = await res.json() // optional, if you want response
-    return data
+    // const data = await res.json() // optional, if you want response
+    // return data
   }
 
   //delete job
@@ -40,7 +40,7 @@ function App() {
         <Route path="/jobs" element={<Jobslist />} />
         <Route path="/jobs/:id" element={<JobPage deleteJob={deleteJob} />} />
         <Route path="/add-job" element={<AddJobPage addJob={addJob} />} />
-        <Route path="jobs/edit-job/:id" element={<EditJobPage />} />
+        <Route path="/jobs/edit-job/:id" element={<EditJobPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     )
