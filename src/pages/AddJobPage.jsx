@@ -14,6 +14,7 @@ function AddJobPage({ addJob }) {
   const [cphone, setCPhone] = useState("")
 
   const navigate = useNavigate()
+
   const submitForm = async (e) => {
     e.preventDefault()
 
@@ -32,7 +33,7 @@ function AddJobPage({ addJob }) {
     }
 
     console.log(newJob) // Optional for debugging
-
+    console.log("Form submitted")
     await addJob(newJob) // Wait for API to finish
     navigate("/jobs") // Then navigate
   }
