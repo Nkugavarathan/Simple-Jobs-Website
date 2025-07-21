@@ -1,14 +1,15 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import { FaMapMarker } from "react-icons/fa"
-import { useState } from "react"
+
 function JobList({ job }) {
   const [showFullDescription, setShowFullDescription] = useState(false)
 
-  let description = job.description
-  if (!showFullDescription) {
-    description = description.substring(0, 80) + "..."
-  }
+  const description = job?.description
+    ? showFullDescription
+      ? job.description
+      : job.description.substring(0, 80) + "..."
+    : "No description available"
 
   return (
     <div>
@@ -19,12 +20,14 @@ function JobList({ job }) {
             <h3 className="text-xl font-bold">{job.title}</h3>
           </div>
           <div className="mb-2">{description}</div>
-          <button
-            className="text-indigo-500  hover:text-indigo-600 cursor-pointer"
-            onClick={() => setShowFullDescription((prevdes) => !prevdes)}
-          >
-            {showFullDescription ? "Less" : "More"}
-          </button>
+          {job.description && (
+            <button
+              className="text-indigo-500 hover:text-indigo-600 cursor-pointer"
+              onClick={() => setShowFullDescription((prev) => !prev)}
+            >
+              {showFullDescription ? "Less" : "More"}
+            </button>
+          )}
           <h3 className="text-indigo-500 mb-2">{job.salary}/ Year</h3>
           <div className="border border-gray-100 mb-5"></div>
           <div className="flex flex-col lg:flex-row justify-between mb-4">

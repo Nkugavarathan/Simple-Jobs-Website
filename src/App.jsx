@@ -11,13 +11,27 @@ import NotFoundPage from "./pages/NotFoundPage"
 import JobPage from "./pages/JobPage"
 import AddJobPage from "./pages/AddJobPage"
 function App() {
+  // add job
+  const addJob = async (newJob) => {
+    const res = await fetch("http://localhost:8000/jobs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newJob),
+    })
+
+    const data = await res.json() // optional, if you want response
+    return data
+  }
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
         <Route path="/jobs" element={<Jobslist />} />
         <Route path="/jobs/:id" element={<JobPage />} />
-        <Route path="/add-job" element={<AddJobPage />} />
+        <Route path="/add-job" element={<AddJobPage addJob={addJob} />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     )

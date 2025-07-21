@@ -1,10 +1,11 @@
 import React from "react"
 import { useState } from "react"
-
-function AddJobPage() {
+import { useNavigate } from "react-router-dom"
+function AddJobPage({ addJob }) {
   const [type, setType] = useState("")
   const [jobname, setJobname] = useState("")
-  const [descripton, setDescription] = useState("")
+  const [description, setDescription] = useState("")
+
   const [salary, setSalary] = useState("")
   const [location, setLocation] = useState("")
   const [companyName, setCompanyName] = useState("")
@@ -12,12 +13,36 @@ function AddJobPage() {
   const [cemail, setCEmail] = useState("")
   const [cphone, setCPhone] = useState("")
 
+  const navigate = useNavigate()
+  const submitForm = async (e) => {
+    e.preventDefault()
+
+    const newJob = {
+      title: jobname,
+      type,
+      location,
+      description,
+      salary,
+      company: {
+        name: companyName,
+        description: companydes,
+        cemail,
+        cphone,
+      },
+    }
+
+    console.log(newJob) // Optional for debugging
+
+    await addJob(newJob) // Wait for API to finish
+    navigate("/jobs") // Then navigate
+  }
+
   return (
     <>
       <section className="bg-indigo-50">
         <div className="container m-auto max-w-2xl py-24">
           <div className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
-            <form>
+            <form onSubmit={submitForm}>
               <h2 className="text-3xl text-center font-semibold mb-6">
                 Add Job
               </h2>
@@ -72,7 +97,7 @@ function AddJobPage() {
                   className="border rounded w-full py-2 px-3"
                   rows="4"
                   placeholder="Add any job duties, expectations, requirements, etc"
-                  value={descripton}
+                  value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 ></textarea>
               </div>
