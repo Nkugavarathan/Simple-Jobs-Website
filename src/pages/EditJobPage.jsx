@@ -5,7 +5,6 @@ function EditJob() {
   const { id } = useParams()
   const navigate = useNavigate()
 
-  // Use same state variables as AddJobPage
   const [type, setType] = useState("")
   const [jobname, setJobname] = useState("")
   const [description, setDescription] = useState("")
@@ -261,11 +260,9 @@ function EditJob() {
 
             <div>
               <button
-                className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+                className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline cursor-pointer"
                 type="submit"
-              >
-                Update Job
-              </button>
+              ></button>
             </div>
           </form>
         </div>

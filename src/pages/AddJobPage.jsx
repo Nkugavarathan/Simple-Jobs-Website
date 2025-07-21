@@ -230,6 +230,7 @@ function AddJobPage({ addJob }) {
                 </button>
               </div>
             </form>
+            
           </div>
         </div>
       </section>
